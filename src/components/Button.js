@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Buttton extends React.Component {
+class Button extends React.Component {
     shouldComponentUpdate(nextprops) {
         // so next props e amra change props ta pabo abr amader this.props eow change ace, so 2 ta check korbo , kono change na paile render korbo na false return korbo
         const { change: currentChange, locale: currentLocale } = this.props;
@@ -12,13 +12,18 @@ class Buttton extends React.Component {
     }
 
     render() {
-        console.log('button component render');
-        const { change, locale } = this.props;
+        const { change, locale, show, enable } = this.props;
+        if (!enable) return null;
         return (
-            <button type="button" onClick={() => change(locale)}>
-                Click Here
-            </button>
+            <>
+                <button type="button" onClick={() => change(locale)}>
+                    {locale === 'bn-BD' ? 'Click Here' : 'ক্লিক করুন'}
+                </button>
+                {show && <p>Hello </p>}
+            </>
         );
     }
 }
-export default Buttton;
+export default Button;
+
+// props theke falsy value pai tai component ta theke null return korlam

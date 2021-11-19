@@ -1,5 +1,5 @@
 import React from 'react';
-import Buttton from './Button';
+import Button from './Button';
 
 class Clock extends React.Component {
     state = { date: new Date(), locale: 'bn-BD' };
@@ -33,38 +33,50 @@ class Clock extends React.Component {
     }
 
     render() {
-        console.log('Clock component render');
-
         const { date, locale } = this.state;
+        // let button;
+        // if (locale === 'bn-BD') {
+        //     button = (
+        //         <Button type="button" change={this.handleClick} locale="en-Us">
+        //             Click Here
+        //         </Button>
+        //     );
+        // } else {
+        //     button = (
+        //         <Button type="button" change={this.handleClick} locale="bn-BD">
+        //             Click Here
+        //         </Button>
+        //     );
+        // }
+
         return (
-            // react e kono component theke ekta element e return korbe
             <div>
                 <h1 className="text">
                     <span className="text"> {date.toLocaleTimeString(locale)}</span>
                 </h1>
-
-                <Buttton type="button" change={this.handleClick} locale="en-Us">
-                    Click Here
-                </Buttton>
+                {locale === 'bn-BD' ? (
+                    <Button
+                        type="button"
+                        change={this.handleClick}
+                        locale="en-Us"
+                        show={false}
+                        enable={false}
+                    />
+                ) : (
+                    <Button type="button" change={this.handleClick} locale="bn-BD" show enable />
+                )}
             </div>
         );
     }
 }
 
 export default Clock;
-/*
- ***Handling Event and control re render***
-event handling function dynamic vabe function ref korte hobe call kora jabe na noile component render hpwar time ei function call korbe ,just ref korte hobe
-event handling function gulai react event ta parameter hisave pass kore dei 
-callback function e this pabe na ekhn this chinano jai 3 upai e ,
-1. constructor function e this ke chinai deowa jai like this.handkleclick = this.handleclick.bind(this)
-2. arrow function cg arrow func e this niye jamela nai 
-3. ekebare function call  e bind use kora jai jekhane parameter o pass kora jai like this.handleclick.bind(this,'hello')  
-4. parameter pass korar r ekta short way ace je onclick ei arrow function diye dibo onclick ={()=>this.handleclick('en-Us')}, chaile parameter o pass kora jai
-5. component use korle onno class theke tokhn amra props hisave pathate pari nijer class er kono property ba function , cg amra jani proti ta component er jsx element ekta object sekhane props e amra ja pathabo ta thake 
-6. ekta component er vitor parent element er state update hoilo kintu nicher jsx element ta update holo na tokhn amra jehutu update hoi nai kintu state change hole react pura component er sob e render kore , so jetar state update hopcee na kintu parent eleemnt er karone render hocee tokhn amra eta manually off kore dite pari 
-7.so component e je eleemnbt ta update hoi na state change hole seta off kora jai react er shouldcomponentupdate life cycle hook ace jeta nextprops and nextstep nei argument hisave , ekhn kono component re render howar age eta call hoi jekhane nextprops r nextstate e dekhe je eitai props r state e kono change ace kina, change thakle true return kori tar mane component ta update hobe r false hole update hobe na, mane kono component autoi render er age manual ekta control niye nichii  
-8. ekhane component erporo re render hobe like button ta jodio amra shouldcomponentupdate diye check koreci prb holo amra jokhn props hisave bind use kore function ref dicii tokhn bind protibar e new ekta function ref kore sekhane this setup kore tai previous change r nextchgange mile na tai re render hoi return true kore, eta arrow func use korleow same hoito
-9. to re render theke bachar way hoilo amra jokhn props hisave func ref pathabo tokhn amra parameter soho pathabo na mane props e arrow func ba bind kore je parameter o pathai eta korbo na class er vitor e arrow func use kore this er kaj chalabo 
-10. key note : event handler gulai call back function arrow function diye lekha vlo jodi state change kori this  niye somosaa hoi na , r call back functtion e data pathaite chaile bind use kora jai , arrow function use kora jai but bind r arrow function new ekta function refer kore proti ta state change e , so component e state change e je element ta barbar re render hocee ek e jinis tar jonno shouldcomponentupdate use kora jai jekhane nextprops r current props er change vuje false true returm kora jai , er jonno bind ba arrow function call back e use kora vlo na , just function reference daow r data pass korte chaile props use koro 
-*/
+/* ***** Conditional Rendering + list & keys******* 
+component er vitor kono jsx element jodi condition based e change hoi tahole sei js eleemnt take js variable er moto chinta kore render er bire condition apply kore erpr render e use korte pari
+onkgula way te conditional rendering korate pari 
+1. render function er vitor jsx return er age amra if else diye state er value use kore condionally jsx eleemnt dekhate pari se khetre jsx element gula variable er moto chinta korte hobe
+2. render e jsx return er vitor singl curlibrace e amra ternari operator use kore conditionally kaj korate pari 
+3. truthy or falsy way - omponent theke ek component er ki ki show korbo ta truthy falsy props akare kaj korate pari 
+4. amra kono component dekhabo ki dekhabo na seta oi component jsx return korar age decisde korte hobe tobe react er component theke kicu ekta return expect kore jodi jsx eleemnt na dekhate chai atleast null return korte hobe, null return korleow oi component er baki lifecyckle hook gula use kore like componentdidmount,unmound ,shouldomponentUpdate egula
+
+*** */
