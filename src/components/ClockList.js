@@ -10,3 +10,8 @@ const ClockList = function ({ quantity = [] }) {
     );
 };
 export default ClockList;
+
+/*
+Lifting state Up
+
+*/

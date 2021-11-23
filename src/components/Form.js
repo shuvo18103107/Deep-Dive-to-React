@@ -4,9 +4,6 @@ export default class Form extends React.Component {
     state = { title: 'javascript', textArea: 'JS is awsome', libary: 'Angular', isMarked: true };
 
     handleChange = (e) => {
-        // cg amra same value change korci 2 ta state er e tai state er obj ke dynamically set korte pari
-        // this.setState({ [e.target.name]: e.target.value });
-
         // console.log(e.target.value);
         if (e.target.type === 'text') {
             this.setState({ title: e.target.value });
@@ -62,7 +59,4 @@ export default class Form extends React.Component {
 }
 // forms handling
 /*
-normally form e state manage kore html dom , kintu react er jehutu nijer state ace tai dom related state use korte mana kore react, tai dom related form state bad deowa jai jodi input e value props use kori tahole form er state react er control e chole jai
-react e 2 way input control hoi controlled way mane react er kace control thake input er jeta value prop diye on kori r ekta uncontrolled jeta dom diye kaj kore jekhane value prop dei na
-form er submit related ba others sob input react er state diye control korte parbo buti inputfile ta just normal dom diye kaj korate hobe cg eta amar local filesystem er kaj, stateless eta 
-*/
+ */
