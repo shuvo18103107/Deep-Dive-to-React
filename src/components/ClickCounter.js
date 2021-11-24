@@ -1,15 +1,12 @@
-import withCounter from './HOC/withCounter';
+import React from 'react';
 
-const ClockCounter = function (props) {
-    const { value, handler } = props;
+// eslint-disable-next-line react/function-component-definition
+export default function ClickCounter({ count, incrementCount }) {
     return (
         <div>
-            <button type="button" onClick={handler}>
-                Clicked {value} times
+            <button type="button" onClick={incrementCount}>
+                Clicked {count} times
             </button>
         </div>
     );
-};
-
-export default withCounter(ClockCounter); // new ekta component return kore with state
-// ekhn ei component state gula ekta function e thakbe sekhan theke props akare jinista pabo s
+}
