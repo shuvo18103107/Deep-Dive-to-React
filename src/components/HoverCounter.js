@@ -1,5 +1,5 @@
 // eslint-disable-next-line react/function-component-definition
-export default function HoverCounter({ count, incrementCount, theme }) {
+export default function HoverCounter({ count, incrementCount, theme, switchTheme }) {
     const style =
         theme === 'dark'
             ? {
@@ -7,9 +7,15 @@ export default function HoverCounter({ count, incrementCount, theme }) {
                   color: '#ffffff',
               }
             : null;
+    console.log('HoverCounter Render');
     return (
-        <h1 style={style} onMouseOver={incrementCount}>
-            Hover {count} times
-        </h1>
+        <div>
+            <h1 style={style} onMouseOver={incrementCount}>
+                Hover {count} times
+            </h1>
+            <button type="button" onClick={switchTheme}>
+                Change Theme
+            </button>
+        </div>
     );
 }

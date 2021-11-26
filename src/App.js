@@ -7,11 +7,21 @@ import percel from './lib/Context';
 
 class App extends React.Component {
     state = {
+        // eslint-disable-next-line react/no-unused-state
         theme: 'dark',
+        // eslint-disable-next-line react/no-unused-state
+        switchTheme: () => {
+            this.setState(({ theme }) => {
+                if (theme === 'dark') {
+                    return { theme: 'light' };
+                }
+
+                return { theme: 'dark' };
+            });
+        },
     };
 
     render() {
-        const { theme } = this.state;
         return (
             <div className="app">
                 <Counter>
@@ -19,7 +29,7 @@ class App extends React.Component {
                         <ClickCounter count={counter} incrementCount={incrementCounter} />
                     )}
                 </Counter>
-                <percel.Provider value={theme}>
+                <percel.Provider value={this.state}>
                     <Section />
                 </percel.Provider>
             </div>

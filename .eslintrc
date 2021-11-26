@@ -23,6 +23,7 @@
     "jest": true
   },
   "rules": {
+    "react/jsx-no-constructed-context-values": 0,
     "jsx-a11y/mouse-events-have-key-events": 0,
     "func-names": 0,
     "react/prefer-stateless-function": 0,
