@@ -1,26 +1,21 @@
-import React from 'react';
+/* eslint-disable prettier/prettier */
+import { useState } from 'react';
 
-class Counter extends React.Component {
-    state = { count: 0 };
-
-    incrementCount = () => {
-        this.setState((prevState) => ({ count: prevState.count + 1 }));
+const Counter = function () {
+    const [counter, setCounter] = useState(0);
+    const addNumber = () => {
+        // eslint-disable-next-line no-plusplus
+        // setCounter(counter+1)
+        setCounter((prevState)=>prevState+1)
     };
-
-    render() {
-        const { count } = this.state;
-        const { children } = this.props;
-        return children(count, this.incrementCount);
-    }
-}
-
-export default Counter;
-
-// ekhn ei khane amra kono element baniye render korbo na , ei component e amra props akare ekta function pathabo seta bolbe ki render korbo
-
-// a comparison between hoc and render props pattern
-
-/*
-hoc and render props 2 tar e main concept holo alada ekta common component thakbe jeta state+ method gula pass kore dibe component gulai 
-ready korqa function with state just call dilei functional hobe
-*/
+    return (
+        <div>
+            <h1>{counter}</h1>
+            <hr />
+            <button type="button" onClick={addNumber}>
+                Add 1
+            </button>
+        </div>
+    );
+};
+export default Counter; 
