@@ -1,22 +1,37 @@
-import { React, useState } from 'react';
-import MyComponent from './components/Mycomponent';
+import { useCallback, useMemo, useState } from 'react';
+import Button from './components/Button';
+import ShowCount from './components/ShowCount';
+import Title from './components/Title';
 
 const App = function () {
-    const [show, setShow] = useState(true);
+    const [count1, setCount1] = useState(0);
+    const [count2, setCount2] = useState(0);
+
+    const incrementByOne = useCallback(() => {
+        setCount1((prevCount) => prevCount + 1);
+    }, []);
+
+    const incrementByFive = useCallback(() => {
+        setCount2((prevCount) => prevCount + 5);
+    }, []);
+
+    const isEvenOrOdd = useMemo(() => {
+        let i = 0;
+        while (i < 1000000000) i += 1; // costly operation
+        return count1 % 2 === 0;
+    }, [count1]);
 
     return (
         <div className="app">
-            <div>{show && <MyComponent />}</div>
-            <br />
-            <br />
-            <button type="button" onClick={() => setShow((prevstate) => !prevstate)}>
-                {show ? 'Hide Post' : 'Show Post'}
-            </button>
+            <Title />
+            <ShowCount count={count1} title="Counter 1" />
+            <span>{isEvenOrOdd ? 'Even' : 'Odd'}</span>
+            <Button handleClick={incrementByOne}>Increment by one</Button>
+            <hr />
+            <ShowCount count={count2} title="Counter 2" />
+            <Button handleClick={incrementByFive}>Increment by five</Button>
         </div>
     );
 };
 
 export default App;
-
-// ekhane jokhn amra timer ta on korci mycomponent e tokhn app theke button click e  umount hoye jaowar por o kintu timer er state ta change hocee background e. tai warning dicee Can't perform a React state update on an unmounted component, tai timer bondo na korle memeory leak hoye jete pare
-// eta class component e solved kora jai componentwillunmount diye , cg ekta component jokhn unmount hoi tokhn eta call hoi
