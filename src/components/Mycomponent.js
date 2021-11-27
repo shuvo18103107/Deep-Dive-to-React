@@ -35,7 +35,7 @@ export default function MyComponent() {
             console.log('component will unmount');
             clearInterval(interval);
         };
-    }, []); // blank array mane first time call hobe render howar rime e just
+    }, []); // blank array mane first time call hobe render howar 9rime e just
     return (
         <div>
             <p>Time: {date.toLocaleTimeString()}</p>
