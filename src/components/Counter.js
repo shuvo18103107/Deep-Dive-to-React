@@ -1,21 +1,29 @@
-/* eslint-disable prettier/prettier */
-import { useState } from 'react';
+import { useReducer } from 'react';
+// eslint-disable-next-line react/function-component-definition
+const initialState = 0;
+const reducer = (currentState, action) => {
+    switch (action) {
+        case 'increment':
+            return currentState + 1;
+        case 'decrement':
+            return currentState - 1;
+        default:
+            return currentState;
+    }
+};
+// eslint-disable-next-line react/function-component-definition
+export default function Counter() {
+    const [count, dispatch] = useReducer(reducer, initialState);
 
-const Counter = function () {
-    const [counter, setCounter] = useState(0);
-    const addNumber = () => {
-        // eslint-disable-next-line no-plusplus
-        // setCounter(counter+1)
-        setCounter((prevState)=>prevState+1)
-    };
     return (
         <div>
-            <h1>{counter}</h1>
-            <hr />
-            <button type="button" onClick={addNumber}>
-                Add 1
+            <div>Count - {count}</div>
+            <button type="button" onClick={() => dispatch('increment')}>
+                Increment
+            </button>
+            <button type="button" onClick={() => dispatch('decrement')}>
+                Decrement
             </button>
         </div>
     );
-};
-export default Counter; 
+}

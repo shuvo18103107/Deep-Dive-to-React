@@ -1,11 +1,9 @@
-import Form from './components/Form';
-import Time from './components/Time';
+import GetPost2 from './components/GetPost2';
 
 const App = function () {
     return (
-        <div className="app">
-            <Form />
-            <Time />
+        <div>
+            <GetPost2 />
         </div>
     );
 };
