@@ -1,6 +1,6 @@
 <!-- PROJECT Title -->
 <p align="center">
-  <h3 align="center">React Basics to Advanced Practice</h3>
+  <h3 align="center">React Basics to Advanced Best Practices</h3>
 
 <!-- TABLE OF CONTENTS -->
 
