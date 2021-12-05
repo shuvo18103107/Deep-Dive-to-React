@@ -4,7 +4,7 @@
 
 <!-- TABLE OF CONTENTS -->
 
-## some guidelines
+## Some Guidelines
 
 - [How to run](#how-to-run)
 - [Editor Setup](#editor-setup)
